@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const sstockSlice = createSlice({
+const stockSlice = createSlice({
   name: "stock",
 
   initialState: {
