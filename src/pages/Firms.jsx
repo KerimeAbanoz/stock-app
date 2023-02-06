@@ -7,9 +7,10 @@ const Firms = () => {
   const BASE_URL = "https://11355.fullstack.clarusway.com/";
   const getFirms = async () => {
     try {
-      const { data } = await axios.get(`${BASE_URL}stock/firms`, {
+      const { data } = await axios.get(`${BASE_URL}stock/firms/`, {
         headers: { Authorization: `Token ${token}` },
       });
+      console.log(data)
     } catch (error) {
       console.log(error)
     }
