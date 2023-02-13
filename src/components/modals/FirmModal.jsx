@@ -4,10 +4,16 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { flexCenter, modalStyle } from "../../styles/globalStyle";
 import { Button, TextField } from "@mui/material";
+import useStockCalls from "../../hooks/useStockCalls";
 
 export default function FirmModal({ open, setOpen, info, setInfo }) {
+  const { postFirm } = useStockCalls();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    postFirm(info);
+    setOpen(false);
+    setInfo({})
   };
 
   const handleChange = (e) => {
@@ -26,7 +32,7 @@ export default function FirmModal({ open, setOpen, info, setInfo }) {
         <Box sx={modalStyle}>
           <Box component="form" onSubmit={handleSubmit} sx={flexCenter}>
             <TextField
-              label="firm Name"
+              label="Firm Name"
               name="name"
               id="name"
               type="text"
@@ -53,7 +59,7 @@ export default function FirmModal({ open, setOpen, info, setInfo }) {
               value={info?.address || ""}
               onChange={handleChange}
             />
-            
+
             <TextField
               label="Image"
               name="image"
@@ -64,7 +70,7 @@ export default function FirmModal({ open, setOpen, info, setInfo }) {
               onChange={handleChange}
             />
 
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" size="large">
               Submit Firm
             </Button>
           </Box>
